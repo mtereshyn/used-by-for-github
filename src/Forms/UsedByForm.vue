@@ -9,7 +9,6 @@
         Search
       </app-button>
     </form>
-    <app-button>Clear</app-button>
   </div>
 </template>
 
