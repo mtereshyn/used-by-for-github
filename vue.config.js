@@ -5,12 +5,6 @@ module.exports = defineConfig({
 
 module.exports = {
   devServer: {
-    proxy: {
-      "/api": {
-        target: "https://github.com",
-        ws: true,
-        changeOrigin: true,
-      },
-    },
+    proxy: "https://github.com/",
   },
 };

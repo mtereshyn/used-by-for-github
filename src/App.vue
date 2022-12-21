@@ -14,8 +14,8 @@ export default {
 };
 </script>
 
-<style lang="scss">
-.list {
-  display: flex;
-}
+<style lang="sass">
+#app
+  margin: 0
+  padding: 0
 </style>
