@@ -1,11 +1,13 @@
 <template>
-  <ul class="used-by-list">
-    <used-by-item
-      v-for="(user, index) in sortedList"
-      :key="index"
-      :user="user"
-    />
-  </ul>
+  <div class="used-by-list">
+    <ul class="used-by-list__list">
+      <used-by-item
+        v-for="(user, index) in sortedList"
+        :key="index"
+        :user="user"
+      />
+    </ul>
+  </div>
 </template>
 
 <script>
@@ -20,12 +22,16 @@ export default {
       type: Array,
       required: false,
     },
+    nextPageLink: {
+      type: String,
+      required: false,
+    },
   },
 };
 </script>
 
 <style lang="sass">
-.used-by-list
+.used-by-list__list
   list-style: none
   display: flex
   flex-direction: column

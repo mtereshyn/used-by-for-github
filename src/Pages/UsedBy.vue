@@ -24,12 +24,14 @@ export default {
   },
   computed: {
     sortedList() {
-      return this.usedUserList.slice().sort((a, b) => b.star - a.star);
+      return this.usedUserListAll.slice().sort((a, b) => b.star - a.star);
     },
   },
   data() {
     return {
       usedUserList: [],
+      usedUserListAll: [],
+      nextPageLink: "",
       link: "",
       isError: false,
     };
@@ -54,14 +56,25 @@ export default {
                 .find(".f5 > a.text-bold")
                 .attr("href")
                 .replace(/\s\s+/g, " ");
+              const userImage = $(user).find("img.avatar").attr("src");
               const stars = $(user).find("span.text-bold").first();
-
               return {
                 name: users,
                 star: stars.text().replace(/\s\s+/g, ""),
+                avatar: userImage,
               };
             })
             .toArray();
+          this.nextPageLink = $(".paginate-container > .BtnGroup")
+            .children("a")
+            .last()
+            .attr("href");
+
+          if (this.usedUserList.length >= 1) {
+            this.request(this.nextPageLink);
+            this.usedUserListAll.push(...this.usedUserList);
+          }
+          console.log(this.sortedList);
         })
         .catch((error) => {
           console.log(error);
