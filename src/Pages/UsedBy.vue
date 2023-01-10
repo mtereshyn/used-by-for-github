@@ -46,10 +46,10 @@ export default {
       );
       axios
         .get(this.link)
-        .then((response) => {
+        .then(async (response) => {
           let htmlData = response;
           const $ = cheerio.load(htmlData.data);
-
+          await new Promise((resolve) => setTimeout(resolve, 500));
           this.usedUserList = $(".Box-row")
             .map((index, user) => {
               const users = $(user)

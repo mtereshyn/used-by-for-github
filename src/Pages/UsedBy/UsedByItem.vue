@@ -1,5 +1,5 @@
 <template>
-  <li class="used-by-item" v-if="user.star > 10">
+  <li class="used-by-item" v-if="user.star > 15">
     <div class="used-by-item__name">
       <div class="used-by-item__name-avatar">
         <img
@@ -33,6 +33,12 @@ export default {
     user: {
       type: Object,
       required: true,
+    },
+  },
+
+  computed: {
+    emptyUsers() {
+      return "User repositories have very few stars";
     },
   },
 };
